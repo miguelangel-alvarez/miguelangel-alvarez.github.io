@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Miguelangel Alvarez – Mechanical Engineering Portfolio</title>
+<style>
+:root {
+  --bg: #080d1c;
+  --card: rgba(14, 19, 52, 0.9);
+  --text: #eef0ff;
+  --muted: #aab0e0;
+  --line: #2c346e;
+  --a1: #ff9a5c; --a2: #8ea0ff; --a3: #ff7ab8; --a4: #4fd8f0; --a5: #b79cff; --a6: #5fe08f;
+  --g1: #1a1163; --g2: #4a3bd8; --g3: #e0338f; --g4: #ff7a1a;
+  --link: #8ea0ff;
+}
+* { box-sizing: border-box; }
+html { scroll-padding-top: 4.5rem; }
+body {
+  margin: 0;
+  background-color: var(--bg);
+  background-image: linear-gradient(rgba(130,170,255,0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(130,170,255,0.055) 1px, transparent 1px), radial-gradient(ellipse at 50% 0%, #131c3a 0%, rgba(19,28,58,0) 60%);
+  background-size: 48px 48px, 48px 48px, 100% 100%;
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+  line-height: 1.6;
+}
+a { color: var(--link); font-weight: 600; }
+a:focus-visible { outline: 3px solid var(--a4); outline-offset: 2px; }
+header.site {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: rgba(8, 10, 32, 0.88);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+header.site nav {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 0.6rem 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
+}
+header.site a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.25rem 0.8rem;
+  border-radius: 999px;
+  transition: background-color 0.15s;
+}
+header.site a:hover { background: rgba(255,255,255,0.12); }
+header.site a:focus-visible { outline-color: #ffffff; }
+main { max-width: 56rem; margin: 0 auto; padding: 0 1.25rem 4rem; }
+section { padding-top: 2.75rem; }
+#about { margin-top: 1.5rem; padding: 1.5rem 0 0.5rem; }
+#about h1 { font-size: clamp(2.2rem, 7vw, 3.6rem); line-height: 1.05; margin: 0 0 0.4rem; font-weight: 800; letter-spacing: -0.02em; }
+#about .sub { color: var(--a4); font-size: 1.15rem; font-weight: 600; }
+#about .img { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.12); color: #ffffff; }
+h2 {
+  font-size: 1.6rem;
+  margin: 0 0 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 5px solid var(--accent, var(--a2));
+  color: var(--accent, var(--a2));
+  display: inline-block;
+  padding-right: 2rem;
+}
+#projects { --accent: var(--a1); }
+#leadership { --accent: var(--a3); }
+#education { --accent: var(--a5); }
+#skills { --accent: var(--a6); }
+#contact { --accent: var(--a1); }
+h3 { font-size: 1.15rem; margin: 0 0 0.15rem; }
+p { margin: 0 0 0.75rem; max-width: 44rem; }
+ul { margin: 0 0 0.75rem; padding-left: 1.25rem; max-width: 44rem; }
+li::marker { color: var(--accent, var(--a2)); }
+.sub { color: var(--muted); margin-bottom: 1rem; }
+.meta { color: var(--accent, var(--a2)); font-size: 0.95rem; font-weight: 700; margin-bottom: 0.6rem; }
+.project {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 8px solid var(--accent);
+  border-radius: 0.9rem;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.project h3 { color: var(--accent); }
+#projects .project:nth-of-type(6n+1) { --accent: var(--a1); }
+#projects .project:nth-of-type(6n+2) { --accent: var(--a2); }
+#projects .project:nth-of-type(6n+3) { --accent: var(--a3); }
+#projects .project:nth-of-type(6n+4) { --accent: var(--a4); }
+#projects .project:nth-of-type(6n+5) { --accent: var(--a5); }
+#projects .project:nth-of-type(6n+6) { --accent: var(--a6); }
+.img {
+  background: color-mix(in srgb, var(--accent, var(--a2)) 12%, var(--card));
+  border: 2px dashed var(--accent, var(--a2));
+  color: var(--accent, var(--a2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  aspect-ratio: 16 / 9;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border-radius: 0.6rem;
+  margin: 0.75rem 0;
+}
+.img-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0.75rem; }
+.img-row .img { margin: 0.25rem 0; }
+.photos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; align-items: start; margin: 0.75rem 0; }
+.photos img { width: 100%; height: auto; display: block; border-radius: 0.6rem; border: 2px solid var(--accent); }
+.photos .wide { grid-column: 1 / -1; }
+.photos .img { aspect-ratio: 4 / 3; margin: 0; }
+.photos .center { grid-column: 1 / -1; width: calc(50% - 0.375rem); justify-self: center; }
+@media (max-width: 36rem) { .photos .center { width: 100%; } }
+.photos.three { grid-template-columns: repeat(3, 1fr); }
+.photos.three img { aspect-ratio: 3 / 4; object-fit: cover; }
+@media (max-width: 36rem) { .photos.three { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 36rem) { .photos { grid-template-columns: 1fr; } }
+dl { margin: 0; display: grid; grid-template-columns: 11rem 1fr; gap: 0.6rem 1rem; align-items: start; }
+dt { font-weight: 700; color: #0b1030; background: var(--accent); border-radius: 999px; padding: 0.1rem 0.9rem; justify-self: start; }
+dd { margin: 0; padding-top: 0.1rem; }
+@media (max-width: 36rem) { dl { grid-template-columns: 1fr; gap: 0.2rem; } dd { margin-bottom: 0.7rem; } }
+footer { margin-top: 1rem; background: rgba(8, 10, 32, 0.88); border-top: 1px solid var(--line); color: #d8dcff; font-size: 0.9rem; }
+footer div { max-width: 56rem; margin: 0 auto; padding: 1rem 1.25rem; }
+.ver { margin-top: 1.25rem; margin-bottom: 0; }
+.about-grid { display: flex; gap: 1.75rem; align-items: center; }
+.portrait { width: 12rem; height: 12rem; border-radius: 50%; object-fit: cover; border: 3px solid var(--a4); flex-shrink: 0; }
+@media (max-width: 36rem) { .about-grid { flex-direction: column; text-align: center; } .portrait { width: 10rem; height: 10rem; } }
+#sky { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+main, footer { position: relative; z-index: 1; }
+</style>
+</head>
+<body>
+<canvas id="sky" aria-hidden="true"></canvas>
+
+<header class="site">
+  <nav aria-label="Main">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#leadership">Leadership</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+<section id="about">
+  <div class="about-grid">
+    <img class="portrait" src="images/portrait.jpg" alt="Portrait of Miguelangel Alvarez in a suit and tie">
+    <div>
+      <h1>Miguelangel Alvarez</h1>
+      <p class="sub">Mechanical Engineering student at the University of Central Florida</p>
+      <p>I'm a mechanical engineering student at UCF (B.S., expected May 2028, 3.4 GPA) who learns by building. I've designed, fabricated, and tested a rocket, a near-space balloon payload, a compressed-air engine, and a quadcopter, from CAD through assembly and testing.</p>
+      <p>Along the way I've led teams of up to 30 people, planned budgets and procurement, and taught other students CAD, 3D printing, soldering, and wiring. I'm eager to get hands-on experience in industry and make an impact. I'm fluent in English and Spanish.</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+
+  <article class="project" id="compressed-air-engine">
+    <h3>ASME Compressed-Air Engine</h3>
+    <p class="meta">Engine Design Team Lead | August 2026 – Present</p>
+    <p>An experimental 15.45 cc compressed-air engine based on a combustion engine design, targeting 2,000 rpm with 3D-printed parts. I manage a 30-member team and direct the engine design decisions.</p>
+    <ul>
+      <li>Assign tasks and prepare weekly progress reports</li>
+      <li>Review calculations and CAD models for accuracy and compliance with requirements</li>
+      <li>Did or oversaw the CAD for every design shown below (except the intake mechanism), along with the calculations and component research, including seal (O-ring) selection</li>
+    </ul>
+    <p class="meta ver">Version 1.0: printed prototype for fit tests</p>
+    <div class="photos">
+      <img src="images/compressed-air-engine-1.jpg" alt="Printed version 1.0 prototype: a stepped base with a raised block that has a bore, next to a short rod with a ring end" loading="lazy">
+      <img src="images/compressed-air-engine-2.jpg" alt="Printed version 1.0 piston with ring grooves attached to a flat connecting rod that ends in a ring, held in a hand" loading="lazy">
+    </div>
+    <p class="meta ver">Version 2.0: CAD revision (not printed)</p>
+    <p>Changes from 1.0: resized the engine block to give the crank more room to rotate, and redesigned the connecting rod.</p>
+    <div class="photos">
+      <img class="wide" src="images/compressed-air-engine-3.png" alt="CAD render of version 2.0: a bent base plate and housing in a translucent view showing the piston, connecting rod, crank, and output shaft" loading="lazy">
+    </div>
+    <p class="meta ver">Version 3.0: current design</p>
+    <p>Changes from 2.0: extended the crankshaft through to the other side with a second counterweight for stability, and added a pin support to further stabilize the crankshaft. I also implemented the intake mechanism, which another group designed.</p>
+    <div class="photos">
+      <img src="images/compressed-air-engine-4.png" alt="CAD render of the latest compressed-air engine design: translucent housing on a base plate showing the cylinder and piston, connecting rod, crank, and output shaft" loading="lazy">
+      <img src="images/compressed-air-engine-5.png" alt="Second angle of the latest engine design from above, showing the housing, crank, and output shaft layout" loading="lazy">
+    </div>
+  </article>
+
+  <article class="project" id="quadcopter">
+    <h3>AIAA Quadcopter Guided Project</h3>
+    <p class="meta">Project Co-Lead | August 2026 – Present</p>
+    <p>A student-run program where I teach freshman and sophomore engineering students what engineering is by building a quadcopter from scratch. As co-lead, I act as the instructor: students learn the basics of CAD, 3D printing, soldering, and wiring for hardware integration while working on a real build.</p>
+    <ul>
+      <li>Teach 15 students through 3 weekly workshops covering SolidWorks CAD, 3D printing, soldering, and wiring for hardware integration</li>
+      <li>Guide students from concept through fabrication, including custom frame cutting, software integration, testing, and flight operations</li>
+      <li>Developed the project budget and procurement plan for 2 semester-long build cycles, including executive board approval review</li>
+    </ul>
+    <div class="photos">
+      <img class="wide" src="images/quadcopter-1.png" alt="SolidWorks sketch of a 145 mm by 48 mm drone plate with dimensioned mounting holes and 28 degree angled hole patterns" loading="lazy">
+      <img class="wide" src="images/quadcopter-2.png" alt="SolidWorks sketch of a tapered drone part about 70 mm long with two 3 mm holes at one end and four 3 mm holes at the wider end" loading="lazy">
+    </div>
+  </article>
+
+  <article class="project" id="trajectory-simulator">
+    <h3>Rocket Trajectory Simulator</h3>
+    <p class="meta">Personal Project | April 2026 – May 2026 | Python</p>
+    <p>A 1DOF trajectory simulator that models thrust, aerodynamic drag, atmospheric density variation, and variable gravity.</p>
+    <ul>
+      <li>Outputs time-resolved altitude, velocity, and acceleration profiles, including apogee, max velocity, and peak acceleration</li>
+      <li>Reads real motor thrust curves from industry-standard .eng files</li>
+      <li>Results validated within 2.15% of OpenRocket</li>
+    </ul>
+    <div class="photos">
+      <img src="images/trajectory-simulator-1.png" alt="Altitude versus time plot: altitude rises to an apogee of about 850 m near 11 s, then falls back to the ground by about 28 s" loading="lazy">
+      <img src="images/trajectory-simulator-2.png" alt="Velocity versus time plot: speed peaks near 200 m/s at about 2 s, then decays and settles near -70 m/s on descent" loading="lazy">
+      <img class="center" src="images/trajectory-simulator-3.png" alt="Acceleration versus time plot: acceleration peaks near 160 m/s squared during the motor burn, drops to about -75 m/s squared at burnout, then approaches zero" loading="lazy">
+    </div>
+  </article>
+
+  <article class="project" id="attitude-monitor">
+    <h3>Arduino Attitude Monitoring System</h3>
+    <p class="meta">Personal Project | February 2026 – March 2026 | Arduino, MPU6050</p>
+    <p>A real-time 3-axis attitude monitor built with an MPU6050 and a 16×2 LCD on an Elegoo Uno R3, sampling ωx, ωy, and ωz at 1 Hz.</p>
+    <ul>
+      <li>Models the sensor as a rigid body and displays torques, kinetic energy, and angular momentum across three body axes in real time</li>
+      <li>Identified gyroscope saturation at the default ±250°/s range, which shows the range requirements for attitude control in propulsion-driven maneuvers</li>
+    </ul>
+    <div class="photos">
+      <img src="images/attitude-monitor-1.jpg" alt="Breadboard build with an Elegoo Uno R3, jumper wires, and a 16x2 LCD showing live angular velocity readings, with the MPU6050 sensor held off-board" loading="lazy">
+      <img src="images/attitude-monitor-2.png" alt="Wiring diagram showing the Uno R3, MPU6050 on I2C, a 16x2 LCD, and a 10k potentiometer for contrast on a breadboard" loading="lazy">
+      <img class="wide" src="images/attitude-monitor-3.png" alt="Arduino sketch that reads gyroscope rates from the MPU6050, converts them to degrees per second, and prints them to the serial monitor and LCD" loading="lazy">
+    </div>
+  </article>
+
+  <article class="project" id="near-space">
+    <h3>NASA Florida Space Grant Consortium Near Space Investigation</h3>
+    <p class="meta">Payloads Lead | February 2025 – March 2025</p>
+    <p>I led a 6-member payload team with 3 independent experiments on a NASA-affiliated near-space balloon targeting an apogee of about 100,000 ft.</p>
+    <ul>
+      <li>Directed the Geiger Counter Radiation Experiment with the Safety Officer, integrating magnetometer and UV sensors</li>
+      <li>Assisted in camera system assembly</li>
+      <li>Implemented a delayed parachute deployment system to prevent payload loss over the Atlantic</li>
+    </ul>
+    <div class="photos three">
+      <img src="images/near-space-1.jpg" alt="Payload electronics laid out on a table before assembly: Arduino board with radio module, wiring, and two taped sensor boxes next to the foam payload tray" loading="lazy">
+      <img src="images/near-space-2.jpg" alt="Team members holding the foam payload tray while wiring the experiments, with a pink taped box and a yellow box zip-tied in place" loading="lazy">
+      <img src="images/near-space-3.jpg" alt="Wired electronics hanging from the payload lid above the pink-lined foam box they go into" loading="lazy">
+      <img src="images/near-space-4.jpg" alt="Finished payload box wrapped in orange tape with red straps, a row of sensor boards on top, and a chain attachment" loading="lazy">
+      <img src="images/near-space-5.jpg" alt="Team members in green work gloves steadying the large white weather balloon during inflation" loading="lazy">
+      <img src="images/near-space-6.jpg" alt="The balloon, payload box, and orange streamer rising on the flight line against a bright sky" loading="lazy">
+    </div>
+  </article>
+
+  <article class="project" id="rocket-design">
+    <h3>AIAA@UCF Rocket Design</h3>
+    <p class="meta">Team Lead | September 2024 – November 2024</p>
+    <p>I led a 5-member team through the full design, fabrication, assembly, launch, and recovery of a mid-powered rocket on a G74-9W motor.</p>
+    <ul>
+      <li>Designed and optimized the structure and performance in SolidWorks and OpenRocket, simulating a 1,095 ft apogee</li>
+      <li>3D printed the nose cone and sent fin files to UCF's TI Lab for laser cutting</li>
+      <li>Assembled, launched, and recovered the rocket undamaged</li>
+    </ul>
+    <div class="photos">
+      <img class="wide" src="images/rocket-design-1.jpg" alt="Team members building the rocket at a workbench in the lab, with a body tube, nose cone, and laser-cut parts on the table" loading="lazy">
+      <img src="images/rocket-design-2.jpg" alt="Two team members standing with the finished rocket before launch" loading="lazy">
+      <img src="images/rocket-design-3.jpg" alt="The rocket climbing under power with a trail of smoke against a cloudy sky" loading="lazy">
+    </div>
+  </article>
+</section>
+
+<section id="leadership">
+  <h2>Leadership and Professional Development</h2>
+  <h3>Society of Hispanic Professional Engineers</h3>
+  <p class="meta">Member and Peer Tutor | Fall 2024 – Present</p>
+  <ul>
+    <li>Participate in networking events and professional workshops</li>
+    <li>Tutor UCF students in Physics I, leading weekly sessions on core concepts and problem solving</li>
+  </ul>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <h3>University of Central Florida</h3>
+  <p class="meta">B.S. Mechanical Engineering | Expected May 2028 | 3.4 GPA</p>
+  <p>Coursework: Thermodynamics, Dynamics, Solid Mechanics, Principles of Electrical Engineering, Fluid Mechanics (in progress), Mechanical Engineering Measurements (in progress), Analysis and Design of Machine Components (in progress)</p>
+  <h3>Miami-Dade College</h3>
+  <p class="meta">Associate in Arts, completed in dual enrollment | June 2021 – April 2024</p>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <dl>
+    <dt>CAD and simulation</dt>
+    <dd>SolidWorks assemblies, OpenRocket, OpenSim, AutoCAD, Fusion 360, ASME Y14.5</dd>
+    <dt>Programming and analysis</dt>
+    <dd>MATLAB, Python, NumPy, Matplotlib, Arduino IDE, VS Code, Microsoft Office Suite</dd>
+    <dt>Manufacturing</dt>
+    <dd>Arduino-based circuit prototyping, I2C protocol, sensor integration, soldering, FDM 3D printing</dd>
+  </dl>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: <a href="mailto:miguelangel.alvarez290@gmail.com">miguelangel.alvarez290@gmail.com</a></p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/miguelangel-alvarez-fuguet">linkedin.com/in/miguelangel-alvarez-fuguet</a></p>
+</section>
+
+</main>
+
+<footer><div>Miguelangel Alvarez</div></footer>
+
+<script>
+(function () {
+  var c = document.getElementById('sky'), x = c.getContext('2d');
+  var W = 0, H = 0, G = 48, marks = [], runs = [], next = 0;
+  var cols = ['79,216,240', '183,156,255', '255,122,184', '95,224,143'];
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function size() {
+    var d = Math.min(window.devicePixelRatio || 1, 2);
+    W = innerWidth; H = innerHeight;
+    c.width = W * d; c.height = H * d;
+    x.setTransform(d, 0, 0, d, 0, 0);
+    marks = [];
+    for (var i = 0; i * G < W; i++) for (var j = 0; j * G < H; j++) {
+      if (Math.random() < 0.06) marks.push({ x: i * G + 0.5, y: j * G + 0.5, p: Math.random() * 6.28, s: 0.4 + Math.random() * 0.8 });
+    }
+  }
+  function launch() {
+    var x0 = Math.random() * W, x1 = Math.max(0, Math.min(W, x0 + (Math.random() - 0.5) * W * 0.8));
+    runs.push({ x0: x0, x1: x1, h: H * (0.35 + Math.random() * 0.5), n: 0, dur: 220 + Math.random() * 120,
+      pts: [], col: cols[Math.floor(Math.random() * cols.length)] });
+  }
+  function draw(t) {
+    x.clearRect(0, 0, W, H);
+    x.lineWidth = 1;
+    for (var i = 0; i < marks.length; i++) {
+      var m = marks[i], a = reduce ? 0.3 : 0.15 + 0.3 * Math.abs(Math.sin(m.p + t / 1000 * m.s));
+      x.strokeStyle = 'rgba(120,190,255,' + a.toFixed(2) + ')';
+      x.beginPath(); x.moveTo(m.x - 4, m.y); x.lineTo(m.x + 4, m.y); x.moveTo(m.x, m.y - 4); x.lineTo(m.x, m.y + 4); x.stroke();
+    }
+    if (reduce) return;
+    if (t > next && runs.length < 3) { launch(); next = t + 2500 + Math.random() * 3500; }
+    for (var j = runs.length - 1; j >= 0; j--) {
+      var r = runs[j];
+      if (r.n < r.dur) {
+        r.n++;
+        var u = r.n / r.dur, v = 1 - (1 - u) * (1 - u);
+        r.pts.push({ x: r.x0 + (r.x1 - r.x0) * u, y: H - 4 * r.h * v * (1 - v) });
+        if (r.pts.length > 70) r.pts.shift();
+      } else {
+        r.pts.shift();
+        if (!r.pts.length) { runs.splice(j, 1); continue; }
+      }
+      var fade = r.n < r.dur ? (r.n / r.dur > 0.9 ? (1 - r.n / r.dur) / 0.1 : 1) : 1;
+      x.lineWidth = 1.6;
+      for (var k = 1; k < r.pts.length; k++) {
+        x.strokeStyle = 'rgba(' + r.col + ',' + (k / r.pts.length * 0.8 * fade).toFixed(2) + ')';
+        x.beginPath(); x.moveTo(r.pts[k - 1].x, r.pts[k - 1].y); x.lineTo(r.pts[k].x, r.pts[k].y); x.stroke();
+      }
+      if (r.n < r.dur) {
+        var h = r.pts[r.pts.length - 1];
+        x.fillStyle = 'rgba(' + r.col + ',' + fade.toFixed(2) + ')';
+        x.beginPath(); x.arc(h.x, h.y, 2.4, 0, 6.283); x.fill();
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  size();
+  addEventListener('resize', function () { if (innerWidth !== W) { size(); if (reduce) draw(0); } });
+  if (reduce) draw(0); else requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>
